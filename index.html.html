@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="./"> <title>Pour tes 19 ans...</title>
+    <style>
+        body {
+            background-color: #fffafb;
+            color: #5d4037;
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            /* On utilise la photo1 en fond */
+            background: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), 
+                        url('photo1.jpg') center/cover no-repeat;
+            color: #d81b60;
+        }
+        h1 { font-size: 3.5rem; margin-bottom: 10px; text-shadow: 2px 2px 4px white; }
+        .heart { color: #d81b60; font-size: 2rem; margin: 20px 0; }
+        .gallery { max-width: 800px; margin: 0 auto; padding: 50px 20px; }
+        .memory {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 100px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1.2s ease-out;
+        }
+        .memory.visible { opacity: 1; transform: translateY(0); }
+        .memory img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 15px 35px rgba(216, 27, 96, 0.1);
+            border: 10px solid white;
+        }
+        .memory p { margin-top: 25px; font-size: 1.2rem; text-align: center; line-height: 1.8; }
+        footer { text-align: center; padding: 100px 20px; background: #fce4ec; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Joyeux 19 ans</h1>
+        <p>Chaque photo est un souvenir précieux...</p>
+        <div class="heart">♥</div>
+    </header>
+
+    <div class="gallery">
+        <div class="memory"><img src="photo1.jpg"><p>Souvenir 1</p></div>
+        <div class="memory"><img src="photo2.jpg"><p>Souvenir 2</p></div>
+        <div class="memory"><img src="photo3.jpg"><p>Souvenir 3</p></div>
+        <div class="memory"><img src="photo4.jpg"><p>Souvenir 4</p></div>
+        <div class="memory"><img src="photo5.jpg"><p>Souvenir 5</p></div>
+        <div class="memory"><img src="photo6.jpg"><p>Souvenir 6</p></div>
+        <div class="memory"><img src="photo7.jpg"><p>Souvenir 7</p></div>
+        <div class="memory"><img src="photo8.jpg"><p>Souvenir 8</p></div>
+        <div class="memory"><img src="photo9.jpg"><p>Souvenir 9</p></div>
+        <div class="memory"><img src="photo10.jpg"><p>Souvenir 10</p></div>
+        <div class="memory"><img src="photo11.jpg"><p>Souvenir 11</p></div>
+        <div class="memory"><img src="photo12.jpg"><p>Souvenir 12</p></div>
+        <div class="memory"><img src="photo13.jpg"><p>Souvenir 13</p></div>
+        <div class="memory"><img src="photo14.jpg"><p>Souvenir 14</p></div>
+    </div>
+
+    <footer>
+        <h2>Je t'aime.</h2>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.memory').forEach(m => observer.observe(m));
+    </script>
+</body>
+</html>
